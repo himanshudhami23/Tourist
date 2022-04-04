@@ -1,0 +1,143 @@
+{% extends 'base.html' %}{% load static %} {% block stylearea %} {% endblock %} {% block contentarea %}
+<!-- prs title wrapper Start -->
+<div class="prs_title_main_sec_wrapper">
+    <div class="prs_title_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_title_heading_wrapper">
+                    <h2>The Race Return</h2>
+                    <ul>
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; Movie Single</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs title wrapper End -->
+<!-- prs ms trailer wrapper Start -->
+<div class="prs_ms_trailer_vid_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Movie Trailer</h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                <div class="prs_ms_trailer_vid_wrapper">
+                    <div class="prs_ms_trailer_vid_img_overlay"></div>
+                    <div class="prs_ms_trailer_vid_icon_wrapper">
+                        <ul>
+                            <li><a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
+                            </li>
+                        </ul>
+                        <h2>View Trailer</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                <div class="prs_ms_trailer_slider_main_wrapper">
+                    <div class="prs_ms_trailer_slider_left_wrapper">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="{{movie.image.url}}" alt="vp_img">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="{{movie.image.url}}" alt="vp_img">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="{{movie.image.url}}" alt="vp_img">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="{{movie.image.url}}" alt="vp_img">
+                                </div>
+                            </div>
+                            <!-- <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <img src="{% static 'images/content/movie_single/vid_slider_img.jpg'  %}" alt="vp_img">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="prs_ms_trailer_slider_right_wrapper">
+                        <h2>{{movie.relished_date}}</h2>
+                        <p>{{movie.name}}</p>
+                        <img src="{% static 'images/content/movie_single/movie_title.png' %}" alt="title_img">
+                        <h5><span>Starring -</span> {{movie.actress_name}}</h5>
+                        <ul>
+                            <li>Directed by - <span>{{movie.director_name}}</span>
+                            </li>
+                            <li>Produced by - <span>{{movie.producer_name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs ms trailer wrapper End -->
+<!-- prs theater Slider Start -->
+<div class="prs_movie_cast_main_slider_wrapper">
+    <div class="prs_movie_cast_heading_wrapper">
+        <h2>Movie Cast</h2>
+    </div>
+    <div class="wrap-album-slider">
+        <ul class="movie-cast-slider">
+            {% for dt in acctress %}
+            <li class="album-slider__item">
+                <figure class="album">
+                    <div class="prs_ms_cast_slider_cont_wrapper">
+                        <div class="prs_ms_cast_img_wrapper">
+                            <img src="{{dt.image.url}}" alt="cast_img">
+                        </div>
+                        <div class="prs_ms_cast_img_cont_wrapper">
+                            <h4><a href="#">{{dt.name}}</a></h4>
+
+                        </div>
+                    </div>
+                </figure>
+                <!-- End album -->
+            </li>
+
+            {% endfor %}
+            <!-- End album slider item -->
+
+        </ul>
+        <!-- End slider -->
+    </div>
+</div>
+<!-- prs theater Slider End -->
+<!-- prs syn Slider Start -->
+<div class="prs_syn_main_section_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="prs_syn_cont_wrapper">
+                    <h3>Synopsis</h3>
+                    <h4><span>Genre -</span> Action , Reality , Drama, Raching</h4>
+                    <p>{{movie.description}}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="prs_syn_img_wrapper">
+                    <img src="{{movie.image.url}}" alt="syn_img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} {% block scriptsarea %} {% endblock %}

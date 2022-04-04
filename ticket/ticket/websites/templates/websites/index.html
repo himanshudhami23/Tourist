@@ -1,0 +1,392 @@
+{% extends 'base.html' %}{% load static %} {% block stylearea %} {% endblock %} {% block contentarea %}
+<!-- prs Slider Start -->
+<div class="prs_main_slider_wrapper">
+    <div id="rev_slider_41_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="food-carousel26" data-source="gallery" style="margin:0px auto;padding:0px;margin-top:0px;margin-bottom:0px;">
+        <div class="prs_slider_overlay"></div>
+        <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
+        <div id="rev_slider_41_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.1">
+            {% if slider %}
+            <ul>
+                <!-- SLIDE  -->
+                {% for dt in slider %}
+                <li data-index="rs-145" data-transition="fade" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="The Healthy Bowl"
+                    data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                    <!-- MAIN IMAGE -->
+                    <img src="{{dt.image.url }}" alt="" data-bgposition="center center" data-bgfit="contain" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                    <!-- LAYERS -->
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption FoodCarousel-CloseButton rev-btn  tp-resizeme" id="slide-145-layer-5" data-x="441" data-y="110" data-width="['auto']" data-height="['auto']" data-type="button" data-actions='[{"event":"click","action":"stoplayer","layer":"slide-145-layer-3","delay":""},{"event":"click","action":"stoplayer","layer":"slide-145-layer-5","delay":""},{"event":"click","action":"startlayer","layer":"slide-145-layer-1","delay":""}]'
+                        data-responsive_offset="on" data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":800,"to":"o:1;","delay":"bytrigger","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":500,"to":"auto:auto;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255,255,255,1);bg:rgba(41,46,49,1);bw:1px 1px 1px 1px;"}]'
+                        data-textAlign="['left','left','left','left']" data-paddingtop="[14,14,14,14]" data-paddingright="[14,14,14,14]" data-paddingbottom="[14,14,14,14]" data-paddingleft="[16,16,16,16]" data-lasttriggerstate="reset" style="z-index: 7; white-space: nowrap;border-color:transparent;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;"><i class="fa-icon-remove"></i>
+                    </div>
+                </li>
+                {% endfor %}
+                <!-- SLIDE  -->
+
+            </ul>
+            {% endif %}
+            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+        </div>
+    </div>
+    <!-- END REVOLUTION SLIDER -->
+</div>
+<!-- prs Slider End -->
+<!-- prs upcomung Slider Start -->
+<div class="prs_upcom_slider_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Upcoming Movies</h2>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="best">
+                    <div class="prs_upcom_slider_slides_wrapper">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="row">
+                                    {% for dt in movie %}
+                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                                        <div class="prs_upcom_movie_box_wrapper">
+                                            <div class="prs_upcom_movie_img_box">
+                                                <img src="{{dt.image.url}}" alt="movie_img" />
+                                                <div class="prs_upcom_movie_img_overlay"></div>
+                                                <div class="prs_upcom_movie_img_btn_wrapper">
+                                                    <ul>
+                                                        <li><a href="{{dt.taller_video}}" target="blank">View Trailer</a>
+                                                        </li>
+                                                        <li><a href="{% url 'movies:details' dt.url %}">View Details</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="prs_upcom_movie_content_box">
+                                                <div class="prs_upcom_movie_content_box_inner">
+                                                    <h2><a href="#">{{dt.name}}</a></h2>
+                                                    <p>{{dt.category}}</p> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                                <div class="prs_upcom_movie_content_box_inner_icon">
+                                                    <ul>
+                                                        <li><a href="{% url 'movies:book' dt.url %}"><i class="flaticon-cart-of-ecommerce"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="prs_animate_btn1 prs_upcom_main_wrapper">
+                                <ul>
+                                    <li><a href="#" class="button button--tamaya prs_upcom_main_btn" data-text="view all"><span>View All</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs upcomung Slider End -->
+<!-- prs video section Start -->
+<div class="prs_video_section_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_video_sec_icon_wrapper">
+                    <ul>
+                        <li><a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs video section End -->
+<!-- prs letest news Start	-->
+<div class="prs_ln_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>LAtest News</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="prs_ln_left_img_wrapper">
+                    <div class="prs_in_left_img_overlay"></div>
+                    <div class="prs_webseri_video_sec_icon_wrapper ">
+                        <ul>
+                            <li><a class="test-popup-link button" rel='external' href='https://www.youtube.com/embed/ryzOXAO0Ss0' title='title'><i class="flaticon-play-button"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="prs_prs_webseri_video_sec_icon_cont_wrapper">
+                        <p>28 Feb 2018</p>
+                        <h2>The News of theater</h2>
+                        <ul>
+                            <li><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;<a href="#">120 Like</a>
+                            </li>
+                            <li><i class="fa fa-comments-o"></i>&nbsp;&nbsp;<a href="#">52 Comments</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="prs_ln_right_main_wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="prs_ln_right_first_box_wrapper">
+                                <div class="prs_in_right_box_img_wrapper">
+                                    <img src="{% static 'images/content/nl2.jpg' %}" alt="news_img" />
+                                </div>
+                                <div class="prs_in_right_box_img_cont_wrapper">
+                                    <h2><a href="#">The News of theater</a></h2>
+                                    <h3>28 feb 2018</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectuir adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                    <ul>
+                                        <li><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;<a href="#">120 Like</a>
+                                        </li>
+                                        <li><i class="fa fa-comments-o"></i>&nbsp;&nbsp;<a href="#">52 comments</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="prs_ln_right_first_box_wrapper2">
+                                <div class="prs_in_right_box_img_wrapper">
+                                    <img src="{% static 'images/content/nl3.jpg' %}" alt="news_img" />
+                                </div>
+                                <div class="prs_in_right_box_img_cont_wrapper">
+                                    <h2><a href="#">The News of theater</a></h2>
+                                    <h3>28 feb 2018</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectuir adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                    <ul>
+                                        <li><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;<a href="#">120 Like</a>
+                                        </li>
+                                        <li><i class="fa fa-comments-o"></i>&nbsp;&nbsp;<a href="#">52 comments</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs letest news End -->
+<!-- prs theater Slider Start -->
+<div class="prs_theater_main_slider_wrapper">
+    <div class="prs_theater_img_overlay"></div>
+    <div class="prs_theater_sec_heading_wrapper">
+        <h2>TOP MOVIES IN THEATRES</h2>
+    </div>
+    <div class="wrap-album-slider">
+        <ul class="album-slider">
+            <li class="album-slider__item">
+                <figure class="album">
+                    <div class="prs_upcom_movie_box_wrapper">
+                        {% for dt in topmovies %}
+                        <div class="prs_upcom_movie_img_box">
+                            <img src="{{dt.image.url}}" alt="movie_img" />
+                            <div class="prs_upcom_movie_img_overlay"></div>
+                            <div class="prs_upcom_movie_img_btn_wrapper">
+                                <ul>
+                                    <li><a href="{{dt.taller_video}}" target="blank">View Trailer</a>
+                                    </li>
+                                    <li><a href="{% url 'movies:details' dt.url %}">View Details</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <!-- End album body -->
+                </figure>
+                <!-- End album -->
+            </li>
+
+        </ul>
+        <!-- End slider -->
+    </div>
+</div>
+<!-- prs theater Slider End -->
+
+<!-- prs feature slider Start -->
+<div class="prs_feature_slider_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>FEATURED EVENTS</h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_feature_slider_wrapper">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item prs_feature_slider_item_wrapper">
+                            <div class="prs_feature_img_box_wrapper">
+                                <div class="prs_feature_img">
+                                    <img src="{% static 'images/content/ft1.jpg' %}" alt="feature_img">
+                                    <div class="prs_ft_btn_wrapper">
+                                        <ul>
+                                            <li><a href="#">Book Now</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="prs_feature_img_cont">
+                                    <h2><a href="#">Music Event in india</a></h2>
+                                    <div class="prs_ft_small_cont_left">
+                                        <p>Mumbai & Pune</p>
+                                    </div>
+                                    <div class="prs_ft_small_cont_right"> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <ul>
+                                        <li>June 07 - july 08</li>
+                                        <li>08:00-12:00 pm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item prs_feature_slider_item_wrapper">
+                            <div class="prs_feature_img_box_wrapper">
+                                <div class="prs_feature_img">
+                                    <img src="{% static 'images/content/ft2.jpg' %}" alt="feature_img">
+                                    <div class="prs_ft_btn_wrapper">
+                                        <ul>
+                                            <li><a href="#">Book Now</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="prs_feature_img_cont">
+                                    <h2><a href="#">Music Event in india</a></h2>
+                                    <div class="prs_ft_small_cont_left">
+                                        <p>Mumbai & Pune</p>
+                                    </div>
+                                    <div class="prs_ft_small_cont_right"> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <ul>
+                                        <li>June 07 - july 08</li>
+                                        <li>08:00-12:00 pm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item prs_feature_slider_item_wrapper">
+                            <div class="prs_feature_img_box_wrapper">
+                                <div class="prs_feature_img">
+                                    <img src="{% static 'images/content/ft3.jpg' %}" alt="feature_img">
+                                    <div class="prs_ft_btn_wrapper">
+                                        <ul>
+                                            <li><a href="#">Book Now</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="prs_feature_img_cont">
+                                    <h2><a href="#">Music Event in india</a></h2>
+                                    <div class="prs_ft_small_cont_left">
+                                        <p>Mumbai & Pune</p>
+                                    </div>
+                                    <div class="prs_ft_small_cont_right"> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <ul>
+                                        <li>June 07 - july 08</li>
+                                        <li>08:00-12:00 pm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs feature slider End -->
+
+<!-- prs patner slider Start -->
+<div class="prs_patner_main_section_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Our Patner’s</h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_pn_slider_wraper">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p1.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p2.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p3.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p4.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p5.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="prs_pn_img_wrapper">
+                                <img src="images/content/p6.jpg" alt="patner_img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs patner slider End -->{% endblock %} {% block scriptsarea %} {% endblock %}

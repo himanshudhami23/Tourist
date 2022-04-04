@@ -1,0 +1,616 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- 
+Template Name: Movie Pro
+Version: 1.0.0
+Author: Webstrot
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--[endif]-->
+
+
+<!-- Mirrored from www.webstrot.com/html/moviepro/html/seat_booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Jul 2021 04:42:14 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<!-- /Added by HTTrack -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Movie Pro Responsive HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Movie Pro" />
+    <meta name="keywords" content="Movie Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--Template style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{%  static 'css/font-awesome.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dl-menu.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/venobox.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/layers.js' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/navigation.js' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/settings.js' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/seat.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+    <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+    <!-- favicon links -->
+    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
+    <script src="{% static '../../../google_analytics_auto.js' %}"></script>
+</head>
+
+<body>
+    <!-- preloader Start -->
+    <div id="preloader">
+        <div id="status">
+            <img src="{% static 'images/header/horoscope.gif' %}" id="preloader_image" alt="loader">
+        </div>
+    </div>
+    <!-- color picker start -->
+    <!-- st top header Start -->
+    <div class="st_bt_top_header_wrapper float_left">
+        <div class="container container_seat">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left"> <a href="{% url 'movies:book' seat.url %}"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+                    </div>
+                    <div class="cc_ps_quantily_info cc_ps_quantily_info_tecket">
+                        <p>Select Ticket</p>
+                        <div class="select_number">
+                            <button onclick="changeQty(1); return false;" class="increase"><i class="fa fa-plus"></i>
+												</button>
+                            <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+                            <button onclick="changeQty(0); return false;" class="decrease"><i class="fa fa-minus"></i>
+												</button>
+                        </div>
+                        <input type="hidden" name="product_id" />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+                        <h3>{{seat.name}} - {{seat.language}} - <span id="spntime"></span></h3>
+                        <h4 id="txtTime">Today, 19 Dec, 10:00 PM</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"> <a href="#"><i class="fa fa-times"></i></a>
+                    </div>
+                    <div class="st_seatlay_btn float_left"> <a href="javascript:fn_checkSeat()">Proceed to Pay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- st top header Start -->
+    <!-- st seat Layout Start -->
+    <div class="st_seatlayout_main_wrapper float_left">
+        <div class="container container_seat">
+            <div class="st_seat_lay_heading float_left">
+                <h3>Ariesplex SL Cinemas</h3>
+            </div>
+            <div class="st_seat_full_container">
+                <div class="st_seat_lay_economy_wrapper float_left">
+                    <div class="screen">
+                        <img src="{% static 'images/content/screen.png' %}">
+                    </div>
+                    <div class="st_seat_lay_economy_heading float_left">
+                        <h3>Economy</h3>
+                    </div>
+                    <div class="st_seat_lay_row float_left economy">
+                        <ul>
+                            <li class="st_seat_heading_row">D</li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c1" name="d1">
+                                <label for="c1"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c2" name="d2" placeholder="1">
+                                <label for="c2"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c3" name="d3">
+                                <label for="c3"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</sp2an>
+								<input type="checkbox" id="c4" name="d4">
+								<label for="c4"></label>
+							</li>
+							<li class="seat_disable">
+								<input type="checkbox" id="c5" name="d5">
+								<label for="c5"></label>
+							</li>
+						</ul>
+						<ul class="st_eco_second_row">
+							<li>	<span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c6" name="d6">
+                                <label for="c6"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c7" name="d7" placeholder="1">
+                                <label for="c7"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c8" name="d8">
+                                <label for="c8"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c9" name="d9">
+                                <label for="c9"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c10" name="d10">
+                                <label for="c10"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c11" name="d11">
+                                <label for="c11"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c12" name="d12">
+                                <label for="c12"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c13" name="d12">
+                                <label for="c13"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c14" name="d13">
+                                <label for="c14"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c15" name="d14">
+                                <label for="c15"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c16" name="d15">
+                                <label for="c16"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c17" name="d16">
+                                <label for="c17"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c18" name="d17">
+                                <label for="c18"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c19" name="d18">
+                                <label for="c19"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c20" name="d19" placeholder="1">
+                                <label for="c20"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c21" name="d20">
+                                <label for="c21"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c22" name="d21">
+                                <label for="c22"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c23" name="d22">
+                                <label for="c23"></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left executive">
+                    <div class="st_seat_lay_economy_heading float_left">
+                        <h3>Executive + 3d glasss - rs 190.00</h3>
+                    </div>
+                    <div class="st_seat_lay_row float_left ">
+                        <ul>
+                            <li class="st_seat_heading_row">C</li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c24" name="c1">
+                                <label for="c24"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c25" name="c2" placeholder="1">
+                                <label for="c25"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c26" name="c3">
+                                <label for="c26"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c27" name="c4">
+                                <label for="c27"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c28" name="c5">
+                                <label for="c28"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c29" name="c6">
+                                <label for="c29"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c30" name="c7" placeholder="1">
+                                <label for="c30"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c31" name="c8">
+                                <label for="c31"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c32" name="c9">
+                                <label for="c32"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c33" name="c10">
+                                <label for="c33"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c34" name="c11">
+                                <label for="c34"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c35" name="c12">
+                                <label for="c35"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c36" name="c13">
+                                <label for="c36"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c37" name="c14">
+                                <label for="c37"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c38" name="c15">
+                                <label for="c38"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c39" name="c16">
+                                <label for="c39"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c40" name="c17">
+                                <label for="c40"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c41" name="c18">
+                                <label for="c41"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c42" name="c18">
+                                <label for="c42"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c43" name="c19" placeholder="1">
+                                <label for="c43"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c44" name="c20">
+                                <label for="c44"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c45" name="c21">
+                                <label for="c45"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c46" name="c22">
+                                <label for="c46"></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="st_seat_lay_row float_left">
+                        <ul>
+                            <li class="st_seat_heading_row">B</li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c47" name="b1">
+                                <label for="c47"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c48" name="b2" placeholder="1">
+                                <label for="c48"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c49" name="b3">
+                                <label for="c49"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c50" name="b4">
+                                <label for="c50"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c51" name="b6">
+                                <label for="c51"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c52" name="b7">
+                                <label for="c52"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c53" name="b8" placeholder="1">
+                                <label for="c53"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c54" name="b9">
+                                <label for="c54"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c55" name="b10">
+                                <label for="c55"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c56" name="b11">
+                                <label for="c56"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c57" name="b12">
+                                <label for="c57"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c58" name="b13">
+                                <label for="c58"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c59" name="b14">
+                                <label for="c59"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c60" name="b15">
+                                <label for="c60"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c61" name="b16">
+                                <label for="c61"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c62" name="b17">
+                                <label for="c62"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c63" name="b18">
+                                <label for="c63"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c64" name="b19">
+                                <label for="c64"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c65" name="b20">
+                                <label for="c65"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c66" name="b21" placeholder="1">
+                                <label for="c66"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c67" name="b22">
+                                <label for="c67"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c68" name="b23">
+                                <label for="c68"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c69" name="b24">
+                                <label for="c69"></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="st_seat_lay_row float_left">
+                        <ul>
+                            <li class="st_seat_heading_row">A</li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c70" name="a1">
+                                <label for="c70"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c71" name="a2" placeholder="1">
+                                <label for="c71"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c72" name="a3">
+                                <label for="c72"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c73" name="a4">
+                                <label for="c73"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c74" name="a5">
+                                <label for="c74"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c75" name="a6">
+                                <label for="c75"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c76" name="a7" placeholder="1">
+                                <label for="c76"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c77" name="a8">
+                                <label for="c77"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c78" name="a9">
+                                <label for="c78"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c79" name="a11">
+                                <label for="c79"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c80" name="a12">
+                                <label for="c80"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c81" name="a13">
+                                <label for="c81"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c82" name="a14">
+                                <label for="c82"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c83" name="a15">
+                                <label for="c83"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c84" name="a16">
+                                <label for="c84"></label>
+                            </li>
+                            <li class="seat_disable">
+                                <input type="checkbox" id="c85" name="a17">
+                                <label for="c85"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c86" name="a18">
+                                <label for="c86"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c87" name="a19">
+                                <label for="c87"></label>
+                            </li>
+                        </ul>
+                        <ul class="st_eco_second_row">
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c88" name="a20">
+                                <label for="c88"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c89" name="a21" placeholder="1">
+                                <label for="c89"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c90" name="a22">
+                                <label for="c90"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c91" name="a22">
+                                <label for="c91"></label>
+                            </li>
+                            <li> <span>Pay Rs.790.00</span>
+                                <input type="checkbox" id="c92" name="a23">
+                                <label for="c92"></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- st seat Layout End -->
+    <!--main js file start-->
+    <script src="{%  static 'js/jquery_min.js' %}"></script>
+    <script src="{%  static 'js/modernizr.js' %}"></script>
+    <script src="{%  static 'js/bootstrap.js' %}"></script>
+    <script src="{%  static 'js/owl.carousel.js' %}"></script>
+    <script src="{%  static 'js/jquery.dlmenu.js' %}"></script>
+    <script src="{%  static 'js/jquery.sticky.js' %}"></script>
+    <script src="{%  static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{%  static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{%  static 'js/jquery.bxslider.min.js' %}"></script>
+    <script src="{%  static 'js/venobox.min.js' %}"></script>
+    <script src="{%  static 'js/smothscroll_part1.js' %}"></script>
+    <script src="{%  static 'js/smothscroll_part2.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/jquery.themepunch.revolution.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/jquery.themepunch.tools.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.addon.snow.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.actions.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.carousel.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.kenburn.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.layeranimation.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.migration.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.navigation.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.parallax.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.slideanims.min.js' %}"></script>
+    <script src="{%  static 'js/plugin/rs_slider/revolution.extension.video.min.js' %}"></script>
+    <script src="{%  static 'js/custom.js' %}"></script>
+    <script src="{%  static 'lib/storage.js' %}"></script>
+    <!--main js file end-->
+    <script>
+        //* Isotope js
+        function protfolioIsotope() {
+            if ($('.st_fb_filter_left_box_wrapper ').length) {
+                // Activate isotope in container
+                $(".protfoli_inner, .portfoli_inner").imagesLoaded(function() {
+                    $(".protfoli_inner, .portfoli_inner").isotope({
+                        layoutMode: 'masonry ',
+                    });
+                });
+
+                // Add isotope click function 
+                $(".protfoli_filter li").on('click ', function() {
+                    $(".protfoli_filter li").removeClass("active");
+                    $(this).addClass("active");
+                    var selector = $(this).attr("data-filter");
+                    $(".protfoli_inner, .portfoli_inner").isotope({
+                        filter: selector,
+                        animationOptions: {
+                            duration: 450,
+                            easing: "linear",
+                            queue: false,
+                        }
+                    });
+                    return false;
+                });
+            };
+        };
+        protfolioIsotope();
+
+        function changeQty(increase) {
+            var qty = parseInt($('.select_number ').find("input").val());
+            if (!isNaN(qty)) {
+                qty = increase ? qty + 1 : (qty > 1 ? qty - 1 : 1);
+                $('.select_number ').find("input").val(qty);
+            } else {
+                $('.select_number ').find("input").val(1);
+            }
+        }
+    </script>
+
+    <script>
+        $(function() {
+            let strg = localStorage.getItem('dbmovie')
+            if (strg != null && strg != '""' && typeof strg != 'undefined') {
+                strg = JSON.parse(strg);
+            } else {
+                strg = []
+            }
+            $('#spntime').text(strg[0]['time'])
+            1
+
+            var today = new Date();
+            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date + ' ' + time;
+            $('#txtTime').text(dateTime)
+        })
+    </script>
+</body>
+
+
+<!-- Mirrored from www.webstrot.com/html/moviepro/html/seat_booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Jul 2021 04:42:14 GMT -->
+
+</html>
